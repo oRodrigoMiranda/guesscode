@@ -13,10 +13,10 @@ while acerto == False:
     print (f"O código é : {senha}")
     print (f"Histórico: {historico}")
     entrada = input('Digige a sua tentativa: ')
-    historico.append(entrada)
     while len(entrada) != digitos:
-        print('O código possui {digitos} dígitos! tente novamente')
+        print(f'O código possui {digitos} dígitos! tente novamente')
         entrada = input('Digige a sua tentativa: ')
+    historico.append(entrada)
     contrasenha = list(entrada)
     pts = 0
     for x in range(digitos):
