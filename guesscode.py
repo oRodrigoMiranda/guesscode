@@ -1,22 +1,29 @@
-senha = ['1','2','3','4']
+import random
+
+senha = []
 contrasenha = []
 historico = []
 acerto = False
 
+digitos = int(input('Qual será a quantidade de dígitos do código? : '))
+for x in range (digitos): 
+    senha.append (str(random.randrange(0,9)))
+
 while acerto == False:
+    print (f"O código é : {senha}")
     print (f"Histórico: {historico}")
-    entrada = input('Digige a senha: ')
+    entrada = input('Digige a sua tentativa: ')
+    while len(entrada) != digitos:
+        print(f'O código possui {digitos} dígitos! tente novamente')
+        entrada = input('Digige a sua tentativa: ')
     historico.append(entrada)
     contrasenha = list(entrada)
     pts = 0
-    for x in range(len(contrasenha)):
+    for x in range(digitos):
         if senha[x] == contrasenha[x]:
             pts += 1 
-        if pts == 4:
-            print ("Você acertou a senha! Parabéns!!!!")
+        if pts == digitos:
             acerto = True
-    print (f"Você acertou {pts} números!")
+    msg = f"Você acertou {pts} números!" if acerto != True else "Você acertou o código! Parabéns!!"
+    print (msg)
     print (" ")
-    
-
-
